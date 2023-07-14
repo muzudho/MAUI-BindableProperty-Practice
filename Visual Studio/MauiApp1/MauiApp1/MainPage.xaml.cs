@@ -2,23 +2,22 @@
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+	// - その他
 
+	/// <summary>
+	///		生成
+	/// </summary>
 	public MainPage()
 	{
 		InitializeComponent();
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+    // - パブリック・プロパティ
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+	/// <summary>
+	///		バインディング・コンテキストを公開する
+	/// </summary>
+    public MainPageViewModel MainPageVM => this.BindingContext as MainPageViewModel;
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
 }
 

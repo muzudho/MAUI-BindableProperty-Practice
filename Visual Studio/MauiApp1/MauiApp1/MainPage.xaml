@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MauiApp1"
-             x:Class="MauiApp1.MainPage">
+             x:Class="MauiApp1.MainPage"
+             x:Name="thisContentPage">
 
     <!-- 束縛しているビューモデル -->
     <ContentPage.BindingContext>
@@ -39,27 +40,20 @@
             <GraphicsView HorizontalOptions="Center"
                           WidthRequest="100" HeightRequest="100">
                 <GraphicsView.Drawable>
-                    <!-- is not working -->
-                    <local:SimpleDrawing Left="{Binding Simple30}"
-                                         Top="{Binding Simple70}"/>
+                    <local:SimpleDrawing BindingContext="{x:Reference thisContentPage}"
+                                         Left="{Binding MainPageVM.Simple30}"
+                                         Top="{Binding MainPageVM.Simple70}"/>
                 </GraphicsView.Drawable>
             </GraphicsView>
 
             <GraphicsView HorizontalOptions="Center"
                           WidthRequest="100" HeightRequest="100">
                 <GraphicsView.Drawable>
-                    <!-- is not working -->
-                    <local:SimpleDrawing Left="{Binding Simple50}"
-                                         Top="{Binding Simple50}"/>
+                    <local:SimpleDrawing BindingContext="{x:Reference thisContentPage}"
+                                         Left="{Binding MainPageVM.Simple50}"
+                                         Top="{Binding MainPageVM.Simple50}"/>
                 </GraphicsView.Drawable>
             </GraphicsView>
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
 
         </VerticalStackLayout>
     </ScrollView>

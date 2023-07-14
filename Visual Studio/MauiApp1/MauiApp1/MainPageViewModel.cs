@@ -9,7 +9,7 @@
     ///         CommunityToolkit.Mvvm パッケージを NuGET でインストールしてほしい
     ///     </pre>
     /// </summary>
-    internal class MainPageViewModel : ObservableObject
+    public class MainPageViewModel : ObservableObject
     {
         // - パブリック・プロパティ
 
