@@ -1,6 +1,7 @@
 ﻿namespace MauiApp1
 {
     using Microsoft.Maui.Graphics;
+    using System.Diagnostics;
 
     internal class SimpleDrawing : BindableObject, IDrawable
     {
@@ -25,7 +26,23 @@
             // 返却型
             returnType: typeof(int),
             // これを含んでいるクラス
-            declaringType: typeof(SimpleDrawing));
+            declaringType: typeof(SimpleDrawing),
+            propertyChanged: OnLeftChanged);
+
+        /// <summary>
+        ///     Binding に変更通知プロパティを指定したときに対応
+        /// </summary>
+        /// <param name="bindable"></param>
+        /// <param name="oldValue"></param>
+        /// <param name="newValue"></param>
+        static void OnLeftChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            // Property changed implementation goes here
+            Trace.WriteLine($"[SimpleDrawing OnLeftChanged] old: {oldValue}, new: {newValue}, bindable.type.name: {bindable.GetType().Name}");
+
+            var self = (SimpleDrawing)bindable;
+            self.Left = (int)newValue;
+        }
         #endregion
 
         #region 束縛可能プロパティ（左）
@@ -47,7 +64,23 @@
             // 返却型
             returnType: typeof(int),
             // これを含んでいるクラス
-            declaringType: typeof(SimpleDrawing));
+            declaringType: typeof(SimpleDrawing),
+            propertyChanged: OnTopChanged);
+
+        /// <summary>
+        ///     Binding に変更通知プロパティを指定したときに対応
+        /// </summary>
+        /// <param name="bindable"></param>
+        /// <param name="oldValue"></param>
+        /// <param name="newValue"></param>
+        static void OnTopChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            // Property changed implementation goes here
+            Trace.WriteLine($"[SimpleDrawing OnTopChanged] old: {oldValue}, new: {newValue}, bindable.type.name: {bindable.GetType().Name}");
+
+            var self = (SimpleDrawing)bindable;
+            self.Top = (int)newValue;
+        }
         #endregion
 
         // - パブリック・メソッド

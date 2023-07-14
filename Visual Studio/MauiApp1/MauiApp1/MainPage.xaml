@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:MauiApp1"
              x:Class="MauiApp1.MainPage">
 
+    <!-- 束縛しているビューモデル -->
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>
+
     <ScrollView>
         <VerticalStackLayout
             Spacing="25"
@@ -17,23 +22,35 @@
                 HorizontalOptions="Center" />
 
             <Label
-                Text="Hello, World!"
+                Text="Draw Line"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
                 HorizontalOptions="Center" />
 
             <GraphicsView HorizontalOptions="Center"
                           WidthRequest="100" HeightRequest="100">
                 <GraphicsView.Drawable>
+                    <!-- Ok -->
                     <local:SimpleDrawing Left="80"
                                          Top="50"/>
+                </GraphicsView.Drawable>
+            </GraphicsView>
+
+            <GraphicsView HorizontalOptions="Center"
+                          WidthRequest="100" HeightRequest="100">
+                <GraphicsView.Drawable>
+                    <!-- is not working -->
+                    <local:SimpleDrawing Left="{Binding Simple30}"
+                                         Top="{Binding Simple70}"/>
+                </GraphicsView.Drawable>
+            </GraphicsView>
+
+            <GraphicsView HorizontalOptions="Center"
+                          WidthRequest="100" HeightRequest="100">
+                <GraphicsView.Drawable>
+                    <!-- is not working -->
+                    <local:SimpleDrawing Left="{Binding Simple50}"
+                                         Top="{Binding Simple50}"/>
                 </GraphicsView.Drawable>
             </GraphicsView>
 
